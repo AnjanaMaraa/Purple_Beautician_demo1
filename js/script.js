@@ -2,7 +2,7 @@
 
 /* Replace these placeholders with the official business details. */
 const whatsappNumber = "91XXXXXXXXXX";
-const phoneNumber = whatsappNumber;
+const phoneNumber = "91XXXXXXXXXX";
 const instagramUrl = "#";
 const googleMapsUrl = "#";
 const googleReviewUrl = "#";
@@ -138,7 +138,12 @@ function setMenuState(isOpen, restoreFocus = false) {
     document.body.classList.toggle("menu-open", isOpen);
     menuToggle.setAttribute("aria-expanded", String(isOpen));
     menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
-    navigation.setAttribute("aria-hidden", String(!isOpen));
+
+    if (window.innerWidth <= 1080) {
+        navigation.setAttribute("aria-hidden", String(!isOpen));
+    } else {
+        navigation.removeAttribute("aria-hidden");
+    }
 
     if (isOpen) {
         window.setTimeout(() => menuClose?.focus(), 80);
@@ -199,6 +204,10 @@ window.addEventListener("scroll", () => {
 }, { passive: true });
 
 updateHeader();
+
+if (window.innerWidth <= 1080 && navigation) {
+    navigation.setAttribute("aria-hidden", "true");
+}
 
 /* FAQ Accordion */
 const faqButtons = document.querySelectorAll(".faq-item button");
