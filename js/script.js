@@ -1,8 +1,9 @@
 "use strict";
 
-/* Replace these placeholders with the official business details. */
-const whatsappNumber = "91XXXXXXXXXX";
-const phoneNumber = "91XXXXXXXXXX";
+/* Official business details */
+const whatsappNumber = "917200251560";
+const phoneNumber = "917200251560";
+const phoneDisplay = "+91 72002 51560";
 const instagramUrl = "#";
 const googleMapsUrl = "#";
 const googleReviewUrl = "#";
@@ -46,12 +47,12 @@ function openWhatsApp(service = "Beauty Services") {
         return;
     }
 
-    const message = `Hi Purple+ Beauty Parlour, I would like to enquire about ${service}. Please share the details.`;
+    const message = `Hi DigiMaraa Beauty Parlour, I would like to enquire about ${service}. Please share the details.`;
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank", "noopener,noreferrer");
 }
 
-function callPurplePlus() {
+function callDigiMaraa() {
     const phone = normalizePhoneNumber(phoneNumber);
 
     if (!isPhoneConfigured(phone)) {
@@ -73,7 +74,7 @@ document.querySelectorAll("[data-whatsapp]").forEach((button) => {
 });
 
 document.querySelectorAll("[data-call]").forEach((button) => {
-    button.addEventListener("click", callPurplePlus);
+    button.addEventListener("click", callDigiMaraa);
 });
 
 const contactUrls = {
@@ -102,7 +103,7 @@ document.querySelectorAll("[data-dynamic-url]").forEach((link) => {
 
 if (isPhoneConfigured(phoneNumber)) {
     document.querySelectorAll("[data-phone-label]").forEach((label) => {
-        label.textContent = `+${normalizePhoneNumber(phoneNumber)}`;
+        label.textContent = phoneDisplay;
     });
 }
 
